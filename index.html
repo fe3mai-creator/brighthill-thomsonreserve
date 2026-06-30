@@ -946,10 +946,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- Thank-you state -->
       <div id="thankyou">
-        <h3>Thank You!</h3>
-        <p>We'll be in touch within 1 business day. For faster response, chat with us directly on WhatsApp:</p>
+        <h3>Enquiry Received!</h3>
+        <p id="ty-name-line" style="font-size:17px; color:var(--gold-lt); margin-bottom:8px;"></p>
+        <p>Thank you for your interest in <strong>Thomson Reserve</strong>.<br>
+        Our property consultant will contact you within <strong>1 business day</strong>.</p>
+        <p style="font-size:13px; color:rgba(255,255,255,.5); margin-bottom:28px;">
+          For immediate assistance, reach us directly on WhatsApp:
+        </p>
         <a id="wa-thankyou-link" href="#" class="btn-primary" target="_blank" rel="noopener">
-          💬 WhatsApp Us Now
+          💬 Chat with Us on WhatsApp
         </a>
       </div>
     </div>
@@ -1114,6 +1119,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const unit = data.unit_type || 'unspecified';
     const waMsg = encodeURIComponent(`Hi, I'm interested in Thomson Reserve, unit type: ${unit}. Please share more details.`);
     document.getElementById('wa-thankyou-link').href = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
+    const name = (data.name || '').trim();
+    document.getElementById('ty-name-line').textContent = name ? `Hi ${name}, your enquiry has been sent!` : 'Your enquiry has been sent!';
 
     // Transition to thank-you
     form.style.display = 'none';
